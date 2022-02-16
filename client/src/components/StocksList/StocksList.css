@@ -1,0 +1,11 @@
+.site-statistic-demo-card {
+  display: flex;
+  justify-content: center;
+
+  padding: 30px;
+  background: #ececec;
+}
+
+.card__button {
+  margin-left: 50px;
+}

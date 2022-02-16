@@ -1,0 +1,12 @@
+.list__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.site-card-border-less-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
