@@ -3,11 +3,14 @@ import { Statistic, Card, Row, Col, Switch, Button } from 'antd';
 import { ArrowDownOutlined, ArrowUpOutlined, PoweroffOutlined, CloseOutlined } from '@ant-design/icons';
 import './StocksList.css';
 import 'antd/dist/antd.css';
+import { removeStonk } from "../../store/actions";
+import { useDispatch } from "react-redux";
 
-function StocksList({ stock, filter }) {
+function StocksList({ stock }) {
   const prevPrice = usePrevPropValue(stock.price)
   const [condition, setCondition] = useState(true);
   const [toggle, setToggle] = useState(true);
+  const dispatch = useDispatch();
 
   function usePrevPropValue(value) {
     const ref = React.useRef();
@@ -25,7 +28,7 @@ function StocksList({ stock, filter }) {
     }
   }, [prevPrice, stock.price])
 
-  function onChange(checked) {
+  const onChange = (checked) => {
     setToggle(checked);
   }
 
@@ -40,7 +43,7 @@ function StocksList({ stock, filter }) {
               type="primary"
               icon={<PoweroffOutlined />}
               className={'card__button'}
-              onClick={() => filter((prev) =>[...prev, stock.ticker])}
+              onClick={() => dispatch(removeStonk(stock.ticker))}
             />
             {toggle ?
             <Statistic
